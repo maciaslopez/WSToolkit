@@ -1,0 +1,2 @@
+:name "WSToolkit"
+:lib-dirs '("deps")

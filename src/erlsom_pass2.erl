@@ -275,7 +275,7 @@ translateType(Type = #typeInfo{elements=Elemts, restricts = Base, anyAttr = AnyA
 %% translateType(#typeInfo{typeType = simpleType}, _Types, _Info) ->
 %%   {[], noType};
 
-translateType(TypeInfo=#typeInfo{typeName=Name, typeRef=undefined,
+translateType(_TypeInfo=#typeInfo{typeName=Name, typeRef=undefined,
                         typeType = TypeType,
                         elements=Elemts, attributes=Attrs,
 			anyAttr = AnyAttrValue,
