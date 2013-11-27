@@ -35,11 +35,21 @@
 -export([test0/0,
          test1/0,
          test2/0,
-         test3/0]).
+         test3/0,
+         fib_sut/0]).
 
 -include_lib("erlsom/include/erlsom_parse.hrl").
 -include_lib("erlsom/include/erlsom.hrl").
--include("../include/wsdl20.hrl").
+-include("wsdl20.hrl").
+
+
+fib_sut() ->
+    write_sut_api(
+      none,
+      "../tests/fib/fib.wsdl",
+      "../tests/fib/fib.xsd",
+      "http://localhost:8080",
+      "fib_sut.erl").
 
 %%@private
 test0() ->
