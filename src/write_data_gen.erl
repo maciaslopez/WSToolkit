@@ -49,7 +49,7 @@
 %%@private
 test0()->
     write_data_generators_to_file("../tests/weather/weather.xsd",
-                                  "../tests/weather/weather.wsdlrr",
+                                  "../tests/weather/weather.wsdl",
                                   "weather.erl").
 
 %%@private
