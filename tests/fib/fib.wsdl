@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<description xmlns="http://www.w3.org/ns/wsdl" 
+             xmlns:tns="http://www.webserviceX.NET"
+             targetNamespace="http://www.webserviceX.NET">
+    <types>
+      <s:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+                xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                xmlns:s="http://www.w3.org/2001/XMLSchema"
+                xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                elementFormDefault="qualified"
+                targetNamespace="http://www.webserviceX.NET">
+         <s:element name="fibRequest">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="n" type="s:posInteger"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+         <s:element name="fibResponse">
+            <s:complexType>
+               <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="fibResult" type="s:posInteger"/>
+               </s:sequence>
+            </s:complexType>
+         </s:element>
+      </s:schema>
+    </types>
+   <interface name="FibSoap">
+      <operation name="fib" pattern="http://www.w3.org/ns/wsdl/in-out">
+         <input element="tns:fibRequest"/>
+         <output element="tns:fibResponse"/>
+      </operation>
+   </interface>
+   <interface name="FibHttpGet">
+      <operation name="fib" pattern="http://www.w3.org/ns/wsdl/in-out">
+         <input element="#any"/>
+         <output element="tns:string"/>
+      </operation>
+   </interface> 
+   <binding xmlns:whttp="http://www.w3.org/ns/wsdl/http" name="FibHttpGet"
+            interface="tns:FibHttpGet"
+            type="http://www.w3.org/ns/wsdl/http"
+            >
+      <operation ref="tns:fib" whttp:location="/fib" whttp:method="GET"/>
+   </binding>
+
+   <service name="Fib" interface="tns:FibSoap">
+      <endpoint name="FibSoap" binding="tns:FibSoap"
+                address="http://localhost:8080"/>
+      <endpoint name="FibHttpGet" binding="tns:FibHttpGet"
+                address="http://localhost:8080"/>
+   </service> 
+</description>
