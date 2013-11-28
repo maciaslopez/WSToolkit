@@ -36,11 +36,15 @@
          test1/0,
          test2/0,
          test3/0,
-         fib_sut/0]).
+         fib_sut/0,
+         write_sut/4]).
 
 -include_lib("erlsom/include/erlsom_parse.hrl").
 -include_lib("erlsom/include/erlsom.hrl").
 -include("wsdl20.hrl").
+
+write_sut(WSDL,XSD,URL,File) ->
+    write_sut_api(none,WSDL,XSD,URL,File).
 
 
 fib_sut() ->
