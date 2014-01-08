@@ -35,7 +35,6 @@
 -export([test0/0,
          test1/0,
          test2/0,
-         test3/0,
          fib_sut/0,
          vodkatv_sut/0,
          write_sut/4]).
