@@ -37,6 +37,7 @@
          test2/0,
          test3/0,
          fib_sut/0,
+         vodkatv_sut/0,
          write_sut/4]).
 
 -include_lib("erlsom/include/erlsom_parse.hrl").
@@ -46,7 +47,14 @@
 write_sut(WSDL,XSD,URL,File) ->
     write_sut_api(none,WSDL,XSD,URL,File).
 
-
+vodkatv_sut() ->
+    write_sut_api(
+      none,
+      "../tests/vodkatv/vodkatv2.wsdl",
+      "../tests/vodkatv/vodkatv.xsd",
+      "http://193.144.63.20:8082/vodkatv/",
+      "vodkatv_sut.erl").
+    
 fib_sut() ->
     write_sut_api(
       none,
@@ -83,13 +91,13 @@ test2() ->
       "book_sut.erl").
 
 %%@private
-test3()->
-    write_sut_api(
-      none,
-      "../tests/vodkatv_sample/vodkatv_v0.wsdl", 
-      "../tests/vodkatv_sample/vodkatv_v0.xsd", 
-      "http://localhost:8082/vodkatv/",
-      "vodkatv_sut.erl").
+%% test3()->
+%%     write_sut_api(
+%%       none,
+%%       "../tests/vodkatv_sample/vodkatv_v0.wsdl", 
+%%       "../tests/vodkatv_sample/vodkatv_v0.xsd", 
+%%       "http://localhost:8082/vodkatv/",
+%%       "vodkatv_sut.erl").
 
 %%@doc Generates the WS connector module. The WS connector module
 %%     defines a collection of connector functions that are used by
