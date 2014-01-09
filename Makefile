@@ -18,7 +18,7 @@
 ERLFLAGS= -pa $(CURDIR)/.eunit -pa $(CURDIR)/ebin -pa $(CURDIR)/deps/*/ebin
 
 REBAR_REPO := https://github.com/basho/rebar.git
-REBAR_VERSION := 2.0.0
+REBAR_VERSION := 2.1.0-pre
 REBAR_REPO_DIR := rebar
 REBAR := $(REBAR_REPO_DIR)/rebar
 
