@@ -107,13 +107,13 @@ test3()->
                     OutFile::file:filename())->
                            ok|{error, Error::term()}.
 write_sut_api(HrlFile, WsdlFile, XsdFile, BaseURL, OutFile) ->
-    {ok, Model} = ws_erlsom:compile_xsd_file("../priv/wsdl20.xsd"),
-    Model1 = ws_erlsom:add_xsd_model(Model),
+    {ok, Model} = erlsom:compile_xsd_file("../priv/wsdl20.xsd"),
+    Model1 = erlsom:add_xsd_model(Model),
     io:format("DDD\n"),
-    Result=ws_erlsom:parse_file(WsdlFile, Model1),
+    Result=erlsom:parse_file(WsdlFile, Model1),
     case Result of
         {ok, Res} ->
-            {ok, DataModel} = ws_erlsom:compile_xsd_file(XsdFile),
+            {ok, DataModel} = erlsom:compile_xsd_file(XsdFile),
             Choice = Res#'DescriptionType'.choice, 
             write_sut_api_1(HrlFile, Choice, DataModel, XsdFile, BaseURL, OutFile);
         {error, Error} -> 
